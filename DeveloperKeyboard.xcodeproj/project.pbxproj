@@ -18,6 +18,7 @@
 		ABD5F14229EFC60B0017D294 /* DeveloperKeyboardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F14129EFC60B0017D294 /* DeveloperKeyboardUITestsLaunchTests.swift */; };
 		ABD5F15529EFC61D0017D294 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F15429EFC61D0017D294 /* KeyboardViewController.swift */; };
 		ABD5F15929EFC61D0017D294 /* KeyboardExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ABD5F15229EFC61D0017D294 /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ABD5F16629EFD0D40017D294 /* KeyboardKit in Frameworks */ = {isa = PBXBuildFile; productRef = ABD5F16529EFD0D40017D294 /* KeyboardKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD5F16629EFD0D40017D294 /* KeyboardKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +199,8 @@
 				ABD5F15829EFC61D0017D294 /* PBXTargetDependency */,
 			);
 			name = DeveloperKeyboard;
+			packageProductDependencies = (
+			);
 			productName = DeveloperKeyboard;
 			productReference = ABD5F11B29EFC60A0017D294 /* DeveloperKeyboard.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +254,9 @@
 			dependencies = (
 			);
 			name = KeyboardExtension;
+			packageProductDependencies = (
+				ABD5F16529EFD0D40017D294 /* KeyboardKit */,
+			);
 			productName = KeyboardExtension;
 			productReference = ABD5F15229EFC61D0017D294 /* KeyboardExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -289,6 +296,9 @@
 				Base,
 			);
 			mainGroup = ABD5F11229EFC60A0017D294;
+			packageReferences = (
+				ABD5F16429EFD0D40017D294 /* XCRemoteSwiftPackageReference "KeyboardKit" */,
+			);
 			productRefGroup = ABD5F11C29EFC60A0017D294 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -518,11 +528,12 @@
 				DEVELOPMENT_TEAM = S9WYUGC8TD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,11 +559,12 @@
 				DEVELOPMENT_TEAM = S9WYUGC8TD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -650,7 +662,7 @@
 				DEVELOPMENT_TEAM = S9WYUGC8TD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = KeyboardExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Developer Keyboard";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -675,7 +687,7 @@
 				DEVELOPMENT_TEAM = S9WYUGC8TD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = KeyboardExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Developer Keyboard";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -741,6 +753,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ABD5F16429EFD0D40017D294 /* XCRemoteSwiftPackageReference "KeyboardKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KeyboardKit/KeyboardKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ABD5F16529EFD0D40017D294 /* KeyboardKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABD5F16429EFD0D40017D294 /* XCRemoteSwiftPackageReference "KeyboardKit" */;
+			productName = KeyboardKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		ABD5F12929EFC60B0017D294 /* DeveloperKeyboard.xcdatamodeld */ = {
