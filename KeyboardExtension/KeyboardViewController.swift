@@ -12,6 +12,11 @@ import KeyboardKit
 
 class KeyboardViewController: KeyboardInputViewController {
     
+    override func viewDidLoad() {
+            keyboardLayoutProvider = MyKeyboardLayoutProvider(keyboardContext: keyboardContext, inputSetProvider: inputSetProvider)
+            super.viewDidLoad()
+        }
+    
     override func viewWillSetupKeyboard() {
         super.viewWillSetupKeyboard()
         setup { controller in
@@ -38,72 +43,29 @@ class KeyboardViewController: KeyboardInputViewController {
     }
 }
 
-//public struct DeveloperKeyboard: View {
-//    private let controller: KeyboardInputViewController
-//
-//    init(controller: KeyboardInputViewController) {
-//        self.controller = controller
-//    }
-//
-//    public var body: some View {
-//
-//    }
-//}
+class MyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
+    
+    override func keyboardLayout(for context: KeyboardContext) -> KeyboardLayout {
+        let layout = super.keyboardLayout(for: context)
+        var rows = layout.itemRows
+        let lastRowIndex = rows.count - 1
+        let lastRow = rows.last
 
+        guard var lastRow else { return layout }
 
-//class KeyboardViewController: UIInputViewController {
-//
-//    @IBOutlet var nextKeyboardButton: UIButton!
-//
-//    override func updateViewConstraints() {
-//        super.updateViewConstraints()
-//
-//        // Add custom view sizing constraints here
-//    }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Perform custom UI setup here
-//        self.nextKeyboardButton = UIButton(type: .system)
-//
-//        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-//        self.nextKeyboardButton.sizeToFit()
-//        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-//
-//        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-//
-//        self.view.addSubview(self.nextKeyboardButton)
-//
-//        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-//        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-//    }
-//
-//    override func viewWillLayoutSubviews() {
-//        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
-//        super.viewWillLayoutSubviews()
-//    }
-//
-//    override func textWillChange(_ textInput: UITextInput?) {
-//        // The app is about to change the document's contents. Perform any preparation here.
-//    }
-//
-//    override func textDidChange(_ textInput: UITextInput?) {
-//        // The app has just changed the document's contents, the document context has been updated.
-//        self.changeKeyboardTitleColor() // TODO: can this be moved somewhere?
-//
-//
-//    }
-//
-//    func changeKeyboardTitleColor() {
-//        var textColor: UIColor
-//        let proxy = self.textDocumentProxy
-//        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-//            textColor = UIColor.white
-//        } else {
-//            textColor = UIColor.black
-//        }
-//        self.nextKeyboardButton.setTitleColor(textColor, for: [])
-//    }
-//
-//}
+        let lastItem = lastRow.last
+        let lastItemIndex = lastRow.count - 1
+
+        guard let lastItem else { return layout }
+
+        let size = KeyboardLayoutItemSize(width: .input, height: lastItem.size.height)
+        let ctrl = KeyboardLayoutItem(action: .control, size: size, insets: lastItem.insets)
+        let command = KeyboardLayoutItem(action: .command, size: size, insets: lastItem.insets)
+        
+        lastRow.insert(ctrl, at: lastItemIndex - 1)
+        lastRow.insert(command, at: lastItemIndex - 1)
+        rows[lastRowIndex] = lastRow
+        layout.itemRows = rows
+        return layout
+    }
+}
