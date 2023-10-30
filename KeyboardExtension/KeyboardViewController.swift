@@ -13,7 +13,7 @@ import KeyboardKit
 class KeyboardViewController: KeyboardInputViewController {
     
     override func viewDidLoad() {
-        keyboardLayoutProvider = MyKeyboardLayoutProvider(keyboardContext: keyboardContext, inputSetProvider: inputSetProvider)
+        services.layoutProvider = MyKeyboardLayoutProvider()
         
         super.viewDidLoad()
     }
@@ -22,34 +22,34 @@ class KeyboardViewController: KeyboardInputViewController {
         // super only call this, which will be overriden by anything in this func
         // no need to call lah
         // `setup { SystemKeyboard(controller: $0) }`
-        // super.viewWillSetupKeyboard()
+         super.viewWillSetupKeyboard()
         setup { controller in
-            VStack(spacing: 0) {
-                HStack {
-                    Text("hehe")
-                    Text("hehe")
-                    Text("hehe")
-                    Text("hehe")
-                    Text("hehe")
-                    Text("hehe")
-                    Text("hehe")
-                }
-
-                SystemKeyboard(
-                    layout: controller.keyboardLayoutProvider.keyboardLayout(for: controller.keyboardContext),
-                    appearance: controller.keyboardAppearance,
-                    actionHandler: controller.keyboardActionHandler,
-                    autocompleteContext: controller.autocompleteContext,
-                    autocompleteToolbar: .none,
-                    autocompleteToolbarAction: { [weak controller] suggestion in
-                        controller?.insertAutocompleteSuggestion(suggestion)
-                    },
-                    keyboardContext: controller.keyboardContext,
-                    calloutContext: controller.calloutContext,
-                    width: controller.view.frame.width
-                )
-            }
+            generateView(controller: controller)
         }
+    }
+}
+
+
+func generateView(controller: KeyboardInputViewController) -> some View {
+    VStack(spacing: 0) {
+        HStack {
+            Text("hehe")
+            Text("hehe")
+            Text("hehe")
+            Text("hehe")
+            Text("hehe")
+            Text("hehe")
+            Text("hehe")
+        }
+
+        SystemKeyboard(
+            state: controller.state,
+            services: controller.services,
+            buttonContent: { $0.view },
+            buttonView: { $0.view },
+            emojiKeyboard: { $0.view },
+            toolbar: { $0.view }
+        )
     }
 }
 
@@ -70,12 +70,12 @@ class MyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
         guard let lastItem else { return layout }
 
         // following the size of last item
-        let size = KeyboardLayoutItemSize(width: .input, height: lastItem.size.height)
+        let size = KeyboardLayout.ItemSize(width: .available, height: lastItem.size.height)
         
         // add ctrl option and cmd
-        let ctrl = KeyboardLayoutItem(action: .control, size: size, insets: lastItem.insets)
-        let option = KeyboardLayoutItem(action: .option, size: size, insets: lastItem.insets)
-        let command = KeyboardLayoutItem(action: .command, size: size, insets: lastItem.insets)
+        let ctrl = KeyboardLayout.Item(action: .control, size: size)
+        let option = KeyboardLayout.Item(action: .option, size: size)
+        let command = KeyboardLayout.Item(action: .command, size: size)
 
         lastRow.insert(ctrl, at: lastItemIndex - 1)
         lastRow.insert(option, at: lastItemIndex - 1)
@@ -83,5 +83,13 @@ class MyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
         rows[lastRowIndex] = lastRow
         layout.itemRows = rows
         return layout
+    }
+}
+
+
+
+struct MyKeyboardPreview_Previews: PreviewProvider {
+    static var previews: some View {
+        generateView(controller: KeyboardInputViewController.preview)
     }
 }
