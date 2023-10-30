@@ -13,15 +13,25 @@ import KeyboardKit
 class KeyboardViewController: KeyboardInputViewController {
     
     override func viewDidLoad() {
-            keyboardLayoutProvider = MyKeyboardLayoutProvider(keyboardContext: keyboardContext, inputSetProvider: inputSetProvider)
-            super.viewDidLoad()
-        }
+        keyboardLayoutProvider = MyKeyboardLayoutProvider(keyboardContext: keyboardContext, inputSetProvider: inputSetProvider)
+        
+        super.viewDidLoad()
+    }
     
     override func viewWillSetupKeyboard() {
-        super.viewWillSetupKeyboard()
+        // super only call this, which will be overriden by anything in this func
+        // no need to call lah
+        // `setup { SystemKeyboard(controller: $0) }`
+        // super.viewWillSetupKeyboard()
         setup { controller in
             VStack(spacing: 0) {
                 HStack {
+                    Text("hehe")
+                    Text("hehe")
+                    Text("hehe")
+                    Text("hehe")
+                    Text("hehe")
+                    Text("hehe")
                     Text("hehe")
                 }
 
@@ -43,6 +53,7 @@ class KeyboardViewController: KeyboardInputViewController {
     }
 }
 
+//https://keyboardkit.github.io/KeyboardKit/documentation/keyboardkit/understanding-layout
 class MyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
     
     override func keyboardLayout(for context: KeyboardContext) -> KeyboardLayout {
@@ -58,11 +69,16 @@ class MyKeyboardLayoutProvider: StandardKeyboardLayoutProvider {
 
         guard let lastItem else { return layout }
 
+        // following the size of last item
         let size = KeyboardLayoutItemSize(width: .input, height: lastItem.size.height)
-        let ctrl = KeyboardLayoutItem(action: .control, size: size, insets: lastItem.insets)
-        let command = KeyboardLayoutItem(action: .command, size: size, insets: lastItem.insets)
         
+        // add ctrl option and cmd
+        let ctrl = KeyboardLayoutItem(action: .control, size: size, insets: lastItem.insets)
+        let option = KeyboardLayoutItem(action: .option, size: size, insets: lastItem.insets)
+        let command = KeyboardLayoutItem(action: .command, size: size, insets: lastItem.insets)
+
         lastRow.insert(ctrl, at: lastItemIndex - 1)
+        lastRow.insert(option, at: lastItemIndex - 1)
         lastRow.insert(command, at: lastItemIndex - 1)
         rows[lastRowIndex] = lastRow
         layout.itemRows = rows
