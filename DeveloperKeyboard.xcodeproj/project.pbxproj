@@ -19,6 +19,10 @@
 		ABD5F15529EFC61D0017D294 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5F15429EFC61D0017D294 /* KeyboardViewController.swift */; };
 		ABD5F15929EFC61D0017D294 /* KeyboardExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ABD5F15229EFC61D0017D294 /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ABD5F16629EFD0D40017D294 /* KeyboardKit in Frameworks */ = {isa = PBXBuildFile; productRef = ABD5F16529EFD0D40017D294 /* KeyboardKit */; };
+		ABF250F02AF020530078E5B5 /* MyiPadKeyboardLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF250EF2AF020530078E5B5 /* MyiPadKeyboardLayoutProvider.swift */; };
+		ABF250F22AF020A00078E5B5 /* MyiPhoneKeyboardLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF250F12AF020A00078E5B5 /* MyiPhoneKeyboardLayoutProvider.swift */; };
+		ABF250F42AF020C40078E5B5 /* MyInputSetBasedKeyboardLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF250F32AF020C40078E5B5 /* MyInputSetBasedKeyboardLayoutProvider.swift */; };
+		ABF250F62AF020F70078E5B5 /* MyKeyboardLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF250F52AF020F70078E5B5 /* MyKeyboardLayoutProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,10 @@
 		ABD5F15229EFC61D0017D294 /* KeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD5F15429EFC61D0017D294 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		ABD5F15629EFC61D0017D294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABF250EF2AF020530078E5B5 /* MyiPadKeyboardLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyiPadKeyboardLayoutProvider.swift; sourceTree = "<group>"; };
+		ABF250F12AF020A00078E5B5 /* MyiPhoneKeyboardLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyiPhoneKeyboardLayoutProvider.swift; sourceTree = "<group>"; };
+		ABF250F32AF020C40078E5B5 /* MyInputSetBasedKeyboardLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInputSetBasedKeyboardLayoutProvider.swift; sourceTree = "<group>"; };
+		ABF250F52AF020F70078E5B5 /* MyKeyboardLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeyboardLayoutProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,10 @@
 			isa = PBXGroup;
 			children = (
 				ABD5F15429EFC61D0017D294 /* KeyboardViewController.swift */,
+				ABF250EF2AF020530078E5B5 /* MyiPadKeyboardLayoutProvider.swift */,
+				ABF250F52AF020F70078E5B5 /* MyKeyboardLayoutProvider.swift */,
+				ABF250F32AF020C40078E5B5 /* MyInputSetBasedKeyboardLayoutProvider.swift */,
+				ABF250F12AF020A00078E5B5 /* MyiPhoneKeyboardLayoutProvider.swift */,
 				ABD5F15629EFC61D0017D294 /* Info.plist */,
 			);
 			path = KeyboardExtension;
@@ -378,6 +390,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD5F15529EFC61D0017D294 /* KeyboardViewController.swift in Sources */,
+				ABF250F62AF020F70078E5B5 /* MyKeyboardLayoutProvider.swift in Sources */,
+				ABF250F42AF020C40078E5B5 /* MyInputSetBasedKeyboardLayoutProvider.swift in Sources */,
+				ABF250F22AF020A00078E5B5 /* MyiPhoneKeyboardLayoutProvider.swift in Sources */,
+				ABF250F02AF020530078E5B5 /* MyiPadKeyboardLayoutProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
